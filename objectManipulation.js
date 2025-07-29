@@ -314,7 +314,7 @@ function occurrencesFunc(obj) {
   return occur
 }
 
-console.log(occurrencesFunc(dataa));
+// console.log(occurrencesFunc(dataa));
 
 
 
@@ -358,4 +358,185 @@ function flattenObject(nested) {
   return newObj
 }
 
-console.log(flattenObject(nested))
+// console.log(flattenObject(nested))
+
+
+// 🔹 Problem 9: Swap Keys and Values
+// Description:
+// Write a function swapKeyValue(obj) that creates a new object by swapping 
+// keys and values.
+
+
+const roles = { admin: "A", user: "U", guest: "G" };
+
+function swapKeyValue(obj) {
+  let swappedObj = {};
+  for (let key in obj) {
+    const value = obj[key];
+    swappedObj[value] = key
+  }
+  return swappedObj
+}
+
+// console.log(swapKeyValue(roles)); // ?
+
+
+// 🔹 Problem 10: Filter by Value
+// Description:
+// Write a function filterByValue(obj, predicate) that returns a new object 
+// only with key-value pairs that satisfy the predicate function.
+
+const prices = { apple: 120, banana: 80, mango: 150 };
+
+function filterByValue(obj, callback) {
+  const result = {};
+  for (let key in obj) {
+    const value = obj[key];
+    if (callback(value)) {
+      result[key] = value
+    }
+  }
+  return result
+}
+// console.log(filterByValue(prices, val => val >= 100))
+
+
+// 🔹 Problem 11:  Group by Property
+// Output:
+// {
+//   admin: [ "Alice", "Charlie" ],
+//   user: [ "Bob", "David" ]
+// }
+// const userrs = [
+//   { name: "Alice", role: "admin" },
+//   { name: "Bob", role: "user" },
+//   { name: "Charlie", role: "admin" },
+//   { name: "David", role: "user" }
+// ];
+
+// // console.log(objss)
+
+
+// function groupByProperty(arr) {
+//   const data = arr.forEach((element, index) => {
+//     let result = {};
+//     // console.log(element.role);
+//     for(const key in element){
+//      if(key == 'role'){
+//       const resp = result[key] = [element]
+//       console.log(resp)
+//      }else{
+//       // console.log(false);
+//      }
+//     }
+//     // const value = element.name;
+//     // element.name
+//     // return result;
+//   })
+// }
+
+// console.log(groupByProperty(userrs))
+
+// Q12
+const obbj = {
+  a: 1,
+  b: {
+    b1: 10,
+    b2: {
+      b21: 100,
+      b22: 200
+    }
+  },
+  c: 3
+};
+
+
+function countKey(obj) {
+  let result = [];
+  let keys = ''
+  const count = (obj, keys) => {
+    for (const key in obj) {
+      const parentKey = key
+      const values = obj[key];
+      if (typeof values === 'object') {
+        count(values, key)
+      } else {
+        result.push(parentKey);
+      }
+
+    }
+  }
+  count(obj, keys)
+  return result.length
+  // console.log(obj)
+}
+
+// console.log(countKey(obbj))
+
+
+
+// 13. Invert Object with Arrays
+// const input = {
+//   A: "x",
+//   B: "y",
+//   C: "x",
+//   D: "z"
+// };
+
+// Output:
+// { x: ["A", "C"], y: ["B"], z: ["D"] }
+
+
+const input = {
+  A: "x",
+  B: "y",
+  C: "x",
+  D: "z"
+};
+
+function objectToArray(input) {
+  let result = {};
+  for (const key in input) {
+    const values = input[key];
+    const value = input[key];
+    if (!result[value]) {
+      result[value] = [];
+    }
+    result[values].push(key)
+  }
+  return result
+}
+
+// console.log(objectToArray(input))
+
+
+// 14. Find Deepest Value
+// const data = {
+//   a: {
+//     b: {
+//       c: {
+//         d: 42
+//       }
+//     }
+//   }
+// };
+
+// Output: 42
+
+
+const datta = {
+  a: {
+    b: {
+      c: {
+        d: 42
+      }
+    }
+  }
+};
+
+
+function returnObj(obj) {
+  return obj.a.b.c.d
+}
+
+console.log(returnObj(datta))
