@@ -507,7 +507,7 @@ function objectToArray(input) {
   return result
 }
 
-// console.log(objectToArray(input))
+console.log(objectToArray(input))
 
 
 // 14. Find Deepest Value
