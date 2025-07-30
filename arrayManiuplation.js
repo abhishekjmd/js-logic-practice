@@ -180,7 +180,7 @@ for (const [name, age] of users32) {
 // ✅ 33. Spread with strings
 const word33 = 'Hi!';
 const result33 = [...word33];
-console.log(result33);
+// console.log(result33);
 
 
 // 🔢 LeetCode-Style Array Manipulation
@@ -209,7 +209,32 @@ const evenCount = array4.filter(num => num % 2 === 0).length;
 // console.log(evenCount);
 
 // 5. Return a new array that contains only the positive numbers.
-const array5 = [1,-2,3,-4,5];
-const positivenums = array5.filter(nums=>nums>0)
+const array5 = [1, -2, 3, -4, 5];
+const positivenums = array5.filter(nums => nums > 0)
 // console.log(positivenums);
 
+
+// 6. Remove duplicates from an array.
+// Example: [1, 2, 2, 3, 4, 4] → [1, 2, 3, 4]
+
+const array6 = [1, 2, 2, 3, 4, 4];
+
+const removeDuplicates = array6.filter((value, index) => array6.indexOf(value) === index)
+// console.log(removeDuplicates)
+
+// 7. Return the second largest number in the array.
+const arr07 = [10, 5, 8, 20];
+const sortt = arr07.sort((a, b) => b - a)[0];
+// console.log(sortt)
+
+function manualMax(arr) {
+    let result = 0;
+    let max = arr[0];
+    for (let num of arr) {
+        console.log(num)
+        }
+    
+    return result
+}
+
+console.log(manualMax(arr07))
