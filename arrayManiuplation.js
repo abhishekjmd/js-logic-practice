@@ -223,18 +223,149 @@ const removeDuplicates = array6.filter((value, index) => array6.indexOf(value) =
 // console.log(removeDuplicates)
 
 // 7. Return the second largest number in the array.
-const arr07 = [10, 5, 8, 20];
-const sortt = arr07.sort((a, b) => b - a)[0];
+const arr07 = [30, 55, 28, 20];
+const sortt = arr07.sort((a, b) => b - a)[1];
 // console.log(sortt)
 
-function manualMax(arr) {
-    let result = 0;
+
+// try finding third largest number 
+function secondLarge(arr) {
+    // let result = 0;
+    let secondMax = 0;
     let max = arr[0];
     for (let num of arr) {
-        console.log(num)
+        if (num > max) {
+            secondMax = max;
+            max = num
+        } else if (num > secondMax && num < max) {
+            secondMax = num
         }
-    
-    return result
+    }
+    return secondMax;
 }
 
-console.log(manualMax(arr07))
+// console.log(secondLarge(arr07))
+
+// 8. Rotate an array to the right by k steps.
+// Example: ([1, 2, 3, 4, 5], k = 2) → [4, 5, 1, 2, 3]
+
+
+const array8 = [1, 2, 3, 4, 5];
+// pops basically removes the last element and returns it
+// so array8.pop() will return 5
+// unshift adds element at the starting of array
+// now array8.unshift(5) will add 5 at the starting of the array
+function rotate(arr, steps) {
+    for (let i = 0; i < steps; i++) {
+        arr.unshift(arr.pop())
+    }
+    return arr
+}
+
+// console.log(rotate(array8, 2))
+
+// 9. Find the intersection of two arrays (common elements).
+// Example: [1, 2, 3, 4], [3, 4, 5, 6] → [3, 4]
+
+const array9a = [1, 2, 3, 4];
+const array9b = [3, 4, 5, 6];
+const mergedArr = [...array9a, ...array9b];
+
+const commonArr = mergedArr.filter((num, index) => mergedArr.indexOf(num) !== index)
+
+// console.log(commonArr)
+
+
+// 10. Return the array in reverse order, without using .reverse().
+// Example: [1, 2, 3] → [3, 2, 1]
+const array10 = [1, 2, 3];
+
+function reverseArr(arr) {
+    let reverse = [];
+    for (let i = arr.length - 1; i >= 0; i--) {
+        reverse.push(arr[i])
+    }
+
+    return reverse;
+}
+
+// console.log(reverseArr(array10))
+
+// 11. Find the Missing Number
+// Problem:
+// You are given an array containing n distinct numbers taken from 0, 1, 2, ..., n.
+// Find the one number that is missing from the array.
+
+// Example:
+// Input: [3, 0, 1]
+// Output: 2
+// Edge Cases:
+
+// Missing number at start ([1,2,3]) → 0
+
+// Missing number at end ([0,1,2]) → 3
+
+// Log: Missing number.
+
+const array11 = [0, 1, 2, 3];
+const inputarr = [1, 2, 0]
+
+function missingNums(inputarr) {
+    const actualsum = inputarr.reduce((acc, cur) => acc + cur, 0);
+    const n = inputarr.length;
+    const expectedSum = (n * (n + 1)) / 2;
+    return expectedSum - actualsum
+}
+
+// console.log(missingNums(inputarr))
+
+
+// 12. Find the First Non-Repeating Element
+// Problem:
+// Given an array, find the first element that does not repeat.
+
+// Example:
+
+// Input: [4, 5, 1, 2, 1, 4]
+// Output: 5
+// Edge Cases:
+
+// All repeating → return null
+
+// Single element array → element itself
+
+// Log: First non-repeating element (or null).
+
+
+const array12 = [4, 20, 20, 7, 9, 4];
+function firstNonRepeatingNumber(arr) {
+    let count = {};
+    for (let num of arr) {
+        count[num] = (count[num] || 0) + 1
+    }
+
+    for (let num of arr) {
+        if (count[num] === 1) {
+            return num
+        }
+    }
+    return null
+}
+
+// console.log(firstNonRepeatingNumber(array12))
+
+// 13. Find All Duplicate Numbers
+// Problem:
+// Return all numbers that appear more than once in the array.
+
+// Example:
+
+// Input: [4, 3, 2, 7, 8, 2, 3, 1]
+// Output: [2, 3]
+// Edge Cases:
+
+// No duplicates → []
+
+// All duplicates → unique set of duplicates only
+
+// Log: Array of duplicate numbers.
