@@ -299,12 +299,10 @@ function reverseArr(arr) {
 // Example:
 // Input: [3, 0, 1]
 // Output: 2
+
 // Edge Cases:
-
 // Missing number at start ([1,2,3]) → 0
-
 // Missing number at end ([0,1,2]) → 3
-
 // Log: Missing number.
 
 const array11 = [0, 1, 2, 3];
@@ -325,15 +323,12 @@ function missingNums(inputarr) {
 // Given an array, find the first element that does not repeat.
 
 // Example:
-
 // Input: [4, 5, 1, 2, 1, 4]
 // Output: 5
+
 // Edge Cases:
-
 // All repeating → return null
-
 // Single element array → element itself
-
 // Log: First non-repeating element (or null).
 
 
@@ -354,18 +349,173 @@ function firstNonRepeatingNumber(arr) {
 
 // console.log(firstNonRepeatingNumber(array12))
 
+
+
 // 13. Find All Duplicate Numbers
 // Problem:
 // Return all numbers that appear more than once in the array.
 
 // Example:
-
 // Input: [4, 3, 2, 7, 8, 2, 3, 1]
 // Output: [2, 3]
+
 // Edge Cases:
-
 // No duplicates → []
-
 // All duplicates → unique set of duplicates only
-
 // Log: Array of duplicate numbers.
+
+
+const array13 = [4, 3, 2, 7, 8, 2, 3, 1];
+const dublicateNums = array13.filter((value, index) => array13.indexOf(value) !== index)
+// console.log(dublicateNums)
+
+
+
+
+// 14. Group Elements by Frequency
+// Problem:
+// Given an array, group numbers based on how many times they appear.
+
+// Example:
+// Input: [1, 1, 2, 2, 2, 3]
+// Output: { "1": 2, "2": 3, "3": 1 }
+
+// Edge Cases:
+// All unique → all have frequency 1
+// All same → one key with full count
+// Log: Object of frequency counts.
+
+const array14 = [1, 1, 2, 2, 2, 3];
+
+function countFrequency(arr) {
+    let count = {};
+    for (let num of arr) {
+        count[num] = (count[num] || 0) + 1;
+    }
+    return count;
+
+}
+
+// console.log(countFrequency(array14));
+
+
+
+// 15. Move All Zeroes to the End
+// Problem:
+// Given an array, move all 0s to the end while keeping the order of non-zero elements the same.
+
+// Example:
+// Input: [0, 1, 0, 3, 12]  
+// Output: [1, 3, 12, 0, 0]
+
+// Edge Cases:
+// All zeroes → [0,0,0] → [0,0,0]
+// No zeroes → return array unchanged
+// Mixed negative numbers
+
+// Log: Final rearranged array.
+
+
+const array15 = [0, 1, 0, 3, 12];
+
+function zerosatEnd(arr) {
+    let withoutzeroarr = [];
+    let zeroarr = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === 0) {
+            zeroarr.push(arr[i])
+        } else {
+            withoutzeroarr.push(arr[i])
+        }
+
+    }
+    return [...withoutzeroarr, ...zeroarr];
+}
+// console.log(zerosatEnd(array15))
+
+// 16. Check if Array is Sorted
+// Problem:
+// Check whether the given array is sorted in non-decreasing order.
+
+// Example:
+// Input: [1, 2, 2, 3] → true  
+// Input: [1, 3, 2] → false
+
+// Edge Cases:
+// Empty array → true
+// Single element array → true
+// All equal elements → true
+// Log: true or false.
+
+const array16 = [1, 3, 2];
+
+function isSorted(arr) {
+    let result = true;
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i + 1] >= arr[i]) {
+            result = true
+        } else {
+            result = false
+        }
+    }
+    return result
+}
+
+// console.log(isSorted(array16))
+
+
+// 17. Find k-th Largest Element
+// Problem:
+// Find the k-th largest element in the array.
+
+// Example:
+// Input: [3, 2, 1, 5, 6, 4], k = 2  
+// Output: 5
+
+// Edge Cases:
+// k = 1 → largest number
+// k > array length → return null
+// Duplicates in array
+// Log: k-th largest number.
+
+const array17 = [3, 2, 1, 5, 6, 4];
+const sort17 = array17.sort((a, b) => b - a)[2];
+// console.log(sort17)
+
+function sort17(arr){
+    for( i = 0;)
+    return arr;
+} 
+
+
+
+// 18. Merge Two Sorted Arrays
+// Problem:
+// Merge two sorted arrays into one sorted array (without using .sort()).
+// Example:
+
+// Input: [1, 3, 5], [2, 4, 6]  
+// Output: [1, 2, 3, 4, 5, 6]
+
+// Edge Cases:
+// One array empty → return the other
+// All elements from one array smaller than the other
+// Log: Merged sorted array.
+
+const array18a = [1, 3, 5];
+const array18b = [2, 4, 6];
+function mergeSortedArray(arr1, arr2) {
+    const mergedArray = [...arr1, ...arr2];
+    for (let i = 0; i < mergedArray.length - 1; i++) {
+        for (let j = 0; j < mergedArray.length - i - 1; j++) {
+            if (mergedArray[j] > mergedArray[j + 1]) {
+                let temp = mergedArray[j];
+                mergedArray[j] = mergedArray[j + 1];
+                mergedArray[j + 1] = temp;
+            }
+        }
+    }
+    return mergedArray
+}
+
+console.log(mergeSortedArray(array18a, array18b))
