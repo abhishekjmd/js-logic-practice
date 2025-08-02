@@ -396,7 +396,7 @@ function countFrequency(arr) {
 
 }
 
-// console.log(countFrequency(array14));
+console.log(countFrequency(array14));
 
 
 
@@ -431,7 +431,7 @@ function zerosatEnd(arr) {
     }
     return [...withoutzeroarr, ...zeroarr];
 }
-// console.log(zerosatEnd(array15))
+console.log(zerosatEnd(array15))
 
 // 16. Check if Array is Sorted
 // Problem:
@@ -461,7 +461,7 @@ function isSorted(arr) {
     return result
 }
 
-// console.log(isSorted(array16))
+console.log(isSorted(array16))
 
 
 // 17. Find k-th Largest Element
@@ -480,12 +480,12 @@ function isSorted(arr) {
 
 const array17 = [3, 2, 1, 5, 6, 4];
 const sort17 = array17.sort((a, b) => b - a)[2];
-// console.log(sort17)
+console.log(sort17)
 
-function sort17(arr){
-    for( i = 0;)
-    return arr;
-} 
+// function sort17(arr){
+//     for( i = 0;)
+//     return arr;
+// } 
 
 
 
@@ -519,3 +519,36 @@ function mergeSortedArray(arr1, arr2) {
 }
 
 console.log(mergeSortedArray(array18a, array18b))
+
+// 19. Find Pair with Target Sum
+// Problem:
+// Given an array of integers, find any one pair of numbers that adds up to a given target sum.
+
+// Example:
+// Input: nums = [2, 7, 11, 15], target = 9  
+// Output: [2, 7]
+
+// Edge Cases:
+// Multiple valid pairs → return any one
+// No pair → return null
+// Negative numbers included
+// Log: The pair as [a, b] or null.
+
+
+const array19 = [2, 7, 11, 15];
+
+function findPair(arr, target) {
+    let pair = [];
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            let sum = arr[i] + arr[j];
+            if (sum === target) {
+                pair.push(arr[i], arr[j])
+            }
+        }
+    }
+    return pair;
+}
+
+console.log(findPair(array19, 9))
+
