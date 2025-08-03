@@ -18,8 +18,8 @@ b[0] = 99
 // Question 4: Mutating Array Inside map()
 const arrs = [1, 2, 3];
 arrs.map((value, index, array) => {
-    array[index + 1] = value + 10;
-    return value
+  array[index + 1] = value + 10;
+  return value
 })
 // console.log(arrs)
 
@@ -43,8 +43,8 @@ const spliced = arr7.splice(2, 2);
 // Question 8: Map Return Behavior
 const arr8 = [1, 2, 3];
 const mapped = arr8.map(num => {
-    if (num % 2 === 0) return;
-    return num * 2
+  if (num % 2 === 0) return;
+  return num * 2
 })
 
 // console.log(mapped);
@@ -152,8 +152,8 @@ const result28 = data28.flatMap(n => [n, n * 2]);
 // 🔹 29. Reducing to object
 const letters = ['a', 'b', 'a', 'c'];
 const count = letters.reduce((acc, curr) => {
-    acc[curr] = (acc[curr] || 0) + 1;
-    return acc;
+  acc[curr] = (acc[curr] || 0) + 1;
+  return acc;
 }, {});
 
 // console.log(count);
@@ -174,7 +174,7 @@ const res31 = chars31.reduceRight((acc, val) => acc + val);
 // ✅ 32. Destructuring in for-of
 const users32 = [['abhi', 23], ['tiwari', 30]];
 for (const [name, age] of users32) {
-    // console.log(name,age)
+  // console.log(name,age)
 }
 
 // ✅ 33. Spread with strings
@@ -197,8 +197,8 @@ const doubleArr = array2.map(num => num * 2);
 // 3. Find the maximum value in an array.
 const array3 = [1, 7, 3, 9, 5];
 const maximum = array3.reduce((acc, curr) =>
-    acc > curr ? acc : curr
-    , 0)
+  acc > curr ? acc : curr
+  , 0)
 
 // console.log(maximum)
 
@@ -230,18 +230,18 @@ const sortt = arr07.sort((a, b) => b - a)[1];
 
 // try finding third largest number 
 function secondLarge(arr) {
-    // let result = 0;
-    let secondMax = 0;
-    let max = arr[0];
-    for (let num of arr) {
-        if (num > max) {
-            secondMax = max;
-            max = num
-        } else if (num > secondMax && num < max) {
-            secondMax = num
-        }
+  // let result = 0;
+  let secondMax = 0;
+  let max = arr[0];
+  for (let num of arr) {
+    if (num > max) {
+      secondMax = max;
+      max = num
+    } else if (num > secondMax && num < max) {
+      secondMax = num
     }
-    return secondMax;
+  }
+  return secondMax;
 }
 
 // console.log(secondLarge(arr07))
@@ -256,10 +256,10 @@ const array8 = [1, 2, 3, 4, 5];
 // unshift adds element at the starting of array
 // now array8.unshift(5) will add 5 at the starting of the array
 function rotate(arr, steps) {
-    for (let i = 0; i < steps; i++) {
-        arr.unshift(arr.pop())
-    }
-    return arr
+  for (let i = 0; i < steps; i++) {
+    arr.unshift(arr.pop())
+  }
+  return arr
 }
 
 // console.log(rotate(array8, 2))
@@ -281,12 +281,12 @@ const commonArr = mergedArr.filter((num, index) => mergedArr.indexOf(num) !== in
 const array10 = [1, 2, 3];
 
 function reverseArr(arr) {
-    let reverse = [];
-    for (let i = arr.length - 1; i >= 0; i--) {
-        reverse.push(arr[i])
-    }
+  let reverse = [];
+  for (let i = arr.length - 1; i >= 0; i--) {
+    reverse.push(arr[i])
+  }
 
-    return reverse;
+  return reverse;
 }
 
 // console.log(reverseArr(array10))
@@ -309,10 +309,10 @@ const array11 = [0, 1, 2, 3];
 const inputarr = [1, 2, 0]
 
 function missingNums(inputarr) {
-    const actualsum = inputarr.reduce((acc, cur) => acc + cur, 0);
-    const n = inputarr.length;
-    const expectedSum = (n * (n + 1)) / 2;
-    return expectedSum - actualsum
+  const actualsum = inputarr.reduce((acc, cur) => acc + cur, 0);
+  const n = inputarr.length;
+  const expectedSum = (n * (n + 1)) / 2;
+  return expectedSum - actualsum
 }
 
 // console.log(missingNums(inputarr))
@@ -334,17 +334,17 @@ function missingNums(inputarr) {
 
 const array12 = [4, 20, 20, 7, 9, 4];
 function firstNonRepeatingNumber(arr) {
-    let count = {};
-    for (let num of arr) {
-        count[num] = (count[num] || 0) + 1
-    }
+  let count = {};
+  for (let num of arr) {
+    count[num] = (count[num] || 0) + 1
+  }
 
-    for (let num of arr) {
-        if (count[num] === 1) {
-            return num
-        }
+  for (let num of arr) {
+    if (count[num] === 1) {
+      return num
     }
-    return null
+  }
+  return null
 }
 
 // console.log(firstNonRepeatingNumber(array12))
@@ -388,15 +388,15 @@ const dublicateNums = array13.filter((value, index) => array13.indexOf(value) !=
 const array14 = [1, 1, 2, 2, 2, 3];
 
 function countFrequency(arr) {
-    let count = {};
-    for (let num of arr) {
-        count[num] = (count[num] || 0) + 1;
-    }
-    return count;
+  let count = {};
+  for (let num of arr) {
+    count[num] = (count[num] || 0) + 1;
+  }
+  return count;
 
 }
 
-console.log(countFrequency(array14));
+// console.log(countFrequency(array14));
 
 
 
@@ -419,19 +419,19 @@ console.log(countFrequency(array14));
 const array15 = [0, 1, 0, 3, 12];
 
 function zerosatEnd(arr) {
-    let withoutzeroarr = [];
-    let zeroarr = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === 0) {
-            zeroarr.push(arr[i])
-        } else {
-            withoutzeroarr.push(arr[i])
-        }
-
+  let withoutzeroarr = [];
+  let zeroarr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 0) {
+      zeroarr.push(arr[i])
+    } else {
+      withoutzeroarr.push(arr[i])
     }
-    return [...withoutzeroarr, ...zeroarr];
+
+  }
+  return [...withoutzeroarr, ...zeroarr];
 }
-console.log(zerosatEnd(array15))
+// console.log(zerosatEnd(array15))
 
 // 16. Check if Array is Sorted
 // Problem:
@@ -450,18 +450,18 @@ console.log(zerosatEnd(array15))
 const array16 = [1, 3, 2];
 
 function isSorted(arr) {
-    let result = true;
-    for (let i = 0; i < arr.length - 1; i++) {
-        if (arr[i + 1] >= arr[i]) {
-            result = true
-        } else {
-            result = false
-        }
+  let result = true;
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i + 1] >= arr[i]) {
+      result = true
+    } else {
+      result = false
     }
-    return result
+  }
+  return result
 }
 
-console.log(isSorted(array16))
+// console.log(isSorted(array16))
 
 
 // 17. Find k-th Largest Element
@@ -480,7 +480,7 @@ console.log(isSorted(array16))
 
 const array17 = [3, 2, 1, 5, 6, 4];
 const sort17 = array17.sort((a, b) => b - a)[2];
-console.log(sort17)
+// console.log(sort17)
 
 // function sort17(arr){
 //     for( i = 0;)
@@ -505,17 +505,17 @@ console.log(sort17)
 const array18a = [1, 3, 5];
 const array18b = [2, 4, 6];
 function mergeSortedArray(arr1, arr2) {
-    const mergedArray = [...arr1, ...arr2];
-    for (let i = 0; i < mergedArray.length - 1; i++) {
-        for (let j = 0; j < mergedArray.length - i - 1; j++) {
-            if (mergedArray[j] > mergedArray[j + 1]) {
-                let temp = mergedArray[j];
-                mergedArray[j] = mergedArray[j + 1];
-                mergedArray[j + 1] = temp;
-            }
-        }
+  const mergedArray = [...arr1, ...arr2];
+  for (let i = 0; i < mergedArray.length - 1; i++) {
+    for (let j = 0; j < mergedArray.length - i - 1; j++) {
+      if (mergedArray[j] > mergedArray[j + 1]) {
+        let temp = mergedArray[j];
+        mergedArray[j] = mergedArray[j + 1];
+        mergedArray[j + 1] = temp;
+      }
     }
-    return mergedArray
+  }
+  return mergedArray
 }
 
 console.log(mergeSortedArray(array18a, array18b))
@@ -538,17 +538,17 @@ console.log(mergeSortedArray(array18a, array18b))
 const array19 = [2, 7, 11, 15];
 
 function findPair(arr, target) {
-    let pair = [];
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = i + 1; j < arr.length; j++) {
-            let sum = arr[i] + arr[j];
-            if (sum === target) {
-                pair.push(arr[i], arr[j])
-            }
-        }
+  let pair = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      let sum = arr[i] + arr[j];
+      if (sum === target) {
+        pair.push(arr[i], arr[j])
+      }
     }
-    return pair;
+  }
+  return pair;
 }
 
-console.log(findPair(array19, 9))
+// console.log(findPair(array19, 9))
 
