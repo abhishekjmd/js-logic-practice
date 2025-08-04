@@ -367,7 +367,177 @@ const { name11: empName, details11: { department11: dept, position11 = 'Develope
 
 const nestedArr12 = [1, [2, [3, 4]], 5];
 const [first12, [second, [third12]], fifth12] = nestedArr12;
-// console.log(first12, third12, fifth12)
+console.log(first12, third12, fifth12)
 
 
 
+// 14. Array Destructuring + Rest Operator
+// Problem:
+// Given:
+
+// const colors = ["red", "green", "blue", "yellow", "pink"];
+
+// Extract:
+// First two colors into variables.
+// Remaining colors into an array.
+
+// Edge Cases:
+// Array with only two colors → remaining array should be empty.
+// Log: firstColor, secondColor, restColors
+
+
+const colors13 = ['red', 'green', 'blue', 'yellow', 'pink'];
+const [red, green, ...others13] = colors13;
+// console.log(red,green,others13)
+
+
+
+
+// 15. Mix: Array of Objects Destructuring
+// Problem:
+// Given:
+
+// const products = [
+//   { name: "Laptop", price: 50000 },
+//   { name: "Phone", price: 20000 }
+// ];
+
+// Extract:
+// First product’s name into prod1Name
+// Second product’s price into prod2Price
+// Edge Cases:
+
+// If product array has only one item → prod2Price should be undefined.
+
+const products14 = [
+    { name: 'laptop', price: 5000 },
+    { name: 'phone', price: 20000 }
+]
+
+const [{ name: prod1Name }, { name: prod2Name }] = products14;
+console.log(prod1Name,prod2Name)
+
+
+
+
+// 16. Swap First & Last Elements in Array
+// Problem:
+// Given:
+
+// const nums = [10, 20, 30, 40];
+// Use array destructuring to swap the first and last elements.
+
+// Edge Cases:
+// Array with 1 element → stays the same.
+// Empty array → stays the same.
+
+let nums15 = [10, 20, 30, 40];
+let [a15, b15, c15, d15] = nums15;
+[a15, d15] = [d15, a15];
+console.log(a15, d15)
+
+
+
+// 17. Extract Specific Keys from Array of Objects
+// Problem:
+// Given:
+
+// const users = [
+//   { name: "Alice", age: 25, role: "admin" },
+//   { name: "Bob", age: 30, role: "user" }
+// ];
+// Use destructuring inside .map() to get an array of only the names.
+
+// Expected: ["Alice", "Bob"]
+
+// Edge Cases:
+// Missing name → should be undefined.
+
+
+const users17 = [
+    { name: 'Alice', age: 25, role: 'admin' },
+    { name: 'bob', age: 30, role: 'user' }
+]
+
+const items = users17.map((item, index) => {
+    return item.name
+})
+
+// console.log(items)
+
+
+
+
+// 18. Default Values in Function Parameters
+// Problem:
+// Write:
+
+// function createProfile({ username, bio = "No bio provided" })
+// If bio is missing, it should use the default.
+
+// Example:
+// Input: { username: "John" }
+// Output: "John No bio provided"
+
+function createProfile({ username, bio = 'No bio was provided' }) {
+    return `${username} ${bio}`
+}
+
+console.log(createProfile({ username: 'john' }))    
+
+
+
+
+// 19. Extract & Rename from Nested Object
+// Problem:
+// Given:
+
+// const company = {
+//   ceo: { name: "Sam", age: 50 },
+//   location: "India"
+// };
+
+// Extract:
+// ceo.name → ceoName
+// location → hq
+
+// Edge Cases:
+// Missing ceo → ceoName should be undefined.
+
+const company19 = {
+    ceo19: { name19: "Sam", age: 50 },
+    location: 'India'
+}
+
+const { ceo19: { name19: ceoName }, location: hq } = company19;
+console.log(ceoName,hq)
+
+
+
+
+// 20. Array of Objects + Rest Operator
+// Problem:
+// Given:
+
+// const students = [
+//   { name: "A", score: 90 },
+//   { name: "B", score: 85 },
+//   { name: "C", score: 88 }
+// ];
+
+// Extract:
+// First student’s name into topStudent
+// Rest of the students into others
+
+// Edge Cases:
+// Only 1 student → others should be empty array.
+
+
+const students20 = [
+    { name: 'A', score: 90 },
+    { name: 'B', score: 85 },
+    { name: 'C', score: 88 }
+]
+
+const [{name:topStudent},...others] = students20;
+console.log(topStudent,others)
