@@ -80,7 +80,7 @@ const prob1a = [1, 2, 3];
 const prob1b = [3, 4, 5];
 const mergeda = [...prob1a, ...prob1b];
 const filtered = mergeda.filter((value, index) => mergeda.indexOf(value) === index)
-// console.log(filtered)
+console.log(filtered)
 
 
 
@@ -104,8 +104,8 @@ const filtered = mergeda.filter((value, index) => mergeda.indexOf(value) === ind
 const prob2 = [10, 20, 30];
 const copyProb2 = [...prob2];
 copyProb2[0] = 99;
-// console.log(copyProb2);
-// console.log(prob2);
+console.log(copyProb2);
+console.log(prob2);
 
 
 
@@ -128,7 +128,7 @@ const prob3b = { b: 2, a: 5 };
 const prob3c = { c: 3 };
 
 const mergedProb3 = { ...prob3a, ...prob3b, ...prob3c };
-// console.log(mergedProb3)
+console.log(mergedProb3)
 
 
 
@@ -148,7 +148,7 @@ function sumProb4(...nums) {
     return nums.reduce((acc, curr) => acc + curr, 0);
 }
 
-// console.log(sumProb4(1, 2, 3, 4))
+console.log(sumProb4(1, 2, 3, 4))
 
 
 
@@ -173,8 +173,8 @@ const prob5 = {
 
 const copyProb5 = Object.assign({}, prob5);
 copyProb5.skills.push('Node.js');
-// console.log(prob5);
-// console.log(copyProb5);
+console.log(prob5);
+console.log(copyProb5);
 
 
 
@@ -202,9 +202,7 @@ function rotateArray(arr, k) {
     return arr;
 }
 
-// console.log(rotateArray(prob6, 2))
-
-
+console.log(rotateArray(prob6, 2))
 
 
 
@@ -277,7 +275,7 @@ function rotateArray(arr, k) {
 
 const prob8 = [10, 20, 30, 40];
 const [a8, ...rest8] = prob8
-// console.log(rest8)
+console.log(rest8)
 
 
 
@@ -305,7 +303,7 @@ const prob9b = {
 }
 
 const mergedProb9 = [...prob9a.skills, ...prob9b.skills];
-// console.log(mergedProb9);
+console.log(mergedProb9);
 
 
 
@@ -330,4 +328,4 @@ const mergedProb9 = [...prob9a.skills, ...prob9b.skills];
 const prob10 = [{name:'Abhi'},{name:'Sam'}];
 const copyProb10 = [...prob10];
 copyProb10[0].name = 'Changed';
-// console.log(prob10)
+console.log(prob10)
