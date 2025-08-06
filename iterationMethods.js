@@ -390,5 +390,119 @@ function getSum(obj) {
     return result
 }
 
-console.log(getSum(prob9));
+// console.log(getSum(prob9));
+
+
+
+// 10. Group Words by First Letter
+// Problem:
+// Given an array of words, group them by their first letter into an object.
+// Use for...of.
+
+// Example:
+
+// Input: ["apple", "ant", "banana", "ball"]
+// Output: { a: ["apple", "ant"], b: ["banana", "ball"] }
+
+// Edge Cases:
+// Empty array → return {}.
+// Words starting with capital vs lowercase → treat as same letter or separate.
+
+
+const prob10 = ['apple', 'ant', 'banana', 'ball'];
+
+// let a = 'apple';
+// console.log(a.slice(0,1));
+
+function arrayOfWords(arr) {
+    let result = {};
+    for (let value of arr) {
+        let firstWord = value.slice(0, 1);
+        if (firstWord === value.slice(0, 1)) {
+            if (!result[firstWord]) {
+                result[firstWord] = [];
+            }
+            result[firstWord].push(value)
+
+        }
+    }
+    return result
+}
+// console.log(arrayOfWords(prob10))
+
+
+
+// 11. Invert Object Keys and Values
+// Problem:
+// Given an object, return a new object where keys become values and values become keys.
+// Use Object.entries() and any loop.
+
+// Example:
+
+// Input: { a: 1, b: 2, c: 3 }
+// Output: { 1: "a", 2: "b", 3: "c" }
+
+// Edge Cases:
+// Duplicate values → last key overwrites.
+// Non-string values as keys → auto-convert to string.
+
+const prob11 = { a: 1, b: 2, c: 3 };
+function invertObjectValueKeys(obj) {
+    let result = {};
+    for (let key in obj) {
+        const value = obj[key];
+        result[value] = key
+    }
+    return result
+}
+
+// console.log(invertObjectValueKeys(prob11))
+
+
+
+// 12. Count Frequency of First Letters
+// Problem:
+// Given an array of strings, return an object counting how many words start with each letter.
+// Use for...of.
+
+// Example:
+
+// Input: ["apple", "ant", "banana", "ball", "bat"]
+// Output: { a: 2, b: 3 }
+
+// Edge Cases:
+// Empty array → {}.
+// Mixed case letters → decide if case-sensitive.
+
+
+const prob12 = ['apple', 'ant', 'banana', 'ball', 'bat'];
+
+function firstLetterFrequency(arr){
+  let result = {};
+  for(let value of arr){
+    let firstWord = value.slice(0,1);
+    if(value.slice(0,1) === firstWord){
+        result[firstWord] = (result[firstWord] || 0) + 1;
+    }
+  }
+  return result;
+}
+
+// console.log(firstLetterFrequency(prob12))
+
+
+// 15. Find All Keys Containing a Letter
+// Problem:
+// Given an object and a letter, return an array of keys that contain that letter.
+// Use Object.keys().
+
+// Example:
+
+// Input: { apple: 1, banana: 2, mango: 3 }, letter = "a"
+// Output: ["apple", "banana", "mango"]
+
+// Edge Cases:
+// Case sensitivity.
+// No keys match → empty array.
+
 
