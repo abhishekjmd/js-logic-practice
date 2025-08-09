@@ -163,7 +163,7 @@ for (let key in arr21) {
 // Properties with undefined values still count.
 
 const prob1 = { a: 1, b: 2, c: 3 };
-// console.log(Object.keys(prob1).length)
+console.log(Object.keys(prob1).length)
 
 
 // 2. Sum All Numeric Values in Object
@@ -192,7 +192,7 @@ function sumObjectValues(obj) {
     return sum
 }
 
-// console.log(sumObjectValues(prob2))
+console.log(sumObjectValues(prob2))
 
 
 
@@ -214,12 +214,12 @@ const prob3 = [1, 2, 3];
 function doubleArray(arr) {
     let result = [];
     for (let value of arr) {
-        result.push(value *= value)
+        result.push(value *= 2)
     }
     return result
 }
 
-// console.log(doubleArray(prob3))
+console.log(doubleArray(prob3))
 
 
 
@@ -239,7 +239,7 @@ const prob4 = { a: 1, b: 2 };
 function objectToPairs(obj) {
     return Object.entries(obj)
 }
-// console.log(objectToPairs(prob4))
+console.log(objectToPairs(prob4))
 
 
 
@@ -267,7 +267,7 @@ function reverseObjectKeys(obj) {
     return result
 }
 
-// console.log(reverseObjectKeys(prob5))
+console.log(reverseObjectKeys(prob5))
 
 
 
@@ -297,7 +297,7 @@ function keyCountArray(arr) {
 }
 
 
-// console.log(keyCountArray(prob6));
+console.log(keyCountArray(prob6));
 
 
 
@@ -327,7 +327,7 @@ function getEvenKeys(obj) {
     return result
 }
 
-// console.log(getEvenKeys(prob7))
+console.log(getEvenKeys(prob7))
 
 
 
@@ -352,7 +352,7 @@ function arrayToObject(arr) {
     return Object.fromEntries(arr);
 }
 
-// console.log(arrayToObject(prob8))
+console.log(arrayToObject(prob8))
 
 
 
@@ -390,7 +390,7 @@ function getSum(obj) {
     return result
 }
 
-// console.log(getSum(prob9));
+console.log(getSum(prob9));
 
 
 
@@ -411,9 +411,6 @@ function getSum(obj) {
 
 const prob10 = ['apple', 'ant', 'banana', 'ball'];
 
-// let a = 'apple';
-// console.log(a.slice(0,1));
-
 function arrayOfWords(arr) {
     let result = {};
     for (let value of arr) {
@@ -428,7 +425,7 @@ function arrayOfWords(arr) {
     }
     return result
 }
-// console.log(arrayOfWords(prob10))
+console.log(arrayOfWords(prob10))
 
 
 
@@ -456,7 +453,7 @@ function invertObjectValueKeys(obj) {
     return result
 }
 
-// console.log(invertObjectValueKeys(prob11))
+console.log(invertObjectValueKeys(prob11))
 
 
 
@@ -488,7 +485,7 @@ function firstLetterFrequency(arr){
   return result;
 }
 
-// console.log(firstLetterFrequency(prob12))
+console.log(firstLetterFrequency(prob12))
 
 
 // 15. Find All Keys Containing a Letter
