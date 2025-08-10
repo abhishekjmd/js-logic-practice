@@ -346,3 +346,289 @@ function uniqueTags(arr) {
 //   { name: "Alice", age: "25", role: "Developer" },
 //   { name: "Bob", age: "30", role: "Designer" }
 // ]
+
+const prob9 = 'Alice,25,Developer\nBob,30,Designer';
+const probKey9 = ['name', 'age', 'role'];
+function csvToArray(str, key) {
+    let rows = str.split('\n');
+    let result = [];
+    for (let i = 0; i < rows.length; i++) {
+        const values = rows[i].split(',');
+        let obj = {};
+        for (let j = 0; j < rows.length; j++) {
+            obj[key[j]] = values[j];
+        }
+        result.push(obj)
+
+    }
+    return result
+}
+
+// console.log(csvToArray(prob9, probKey9))
+
+
+// 🧩 Q10: Most Frequent Element
+// Given an array, return the most frequently occurring element.
+// If multiple, return any one of them.
+
+// Example:
+
+// Input: [1, 3, 2, 3, 4, 3, 2, 2, 2]
+// Output: 2
+
+
+const prob10 = [1, 3, 2, 3, 4, 3, 2, 2, 2, 2];
+
+function maxFrequencyElem(arr) {
+    let maxCount = 0;
+    let mostFrequent = null;
+    const result = arr.reduce((acc, curr) => {
+        acc[curr] = (acc[curr] || 0) + 1
+        return acc
+    }, {})
+    for (let [key, values] of Object.entries(result)) {
+        // const value = result[key];
+        // console.log(key,values)
+        if (values > maxCount) {
+            mostFrequent = Number(key)
+        }
+    }
+    return mostFrequent
+}
+
+// console.log(maxFrequencyElem(prob10))
+
+
+
+
+// 🧩 Q11: Pluck Property
+// Given an array of objects, return an array containing only the values of a given property.
+
+// Example:
+
+// Input: 
+// [
+//   { name: "Alice", age: 25 },
+//   { name: "Bob", age: 30 }
+// ], "name"
+
+// Output: ["Alice", "Bob"]
+
+
+const prob11 = [
+    { name: "Alice", age: 25 },
+    { name: "Bob", age: 30 }
+]
+
+
+function getNames(arr, key) {
+    let result = []
+    arr.map(item => {
+        result.push(item[key])
+        // console.log(item[key])
+    })
+    // // let result = [];
+    // return arr.reduce((acc, curr) => {
+    //     acc.push(curr[key])
+    //     return acc
+    // }, []);
+    return result
+
+}
+
+// console.log(getNames(prob11, 'name'))
+
+
+
+
+// 🧩 Q12: Group by First Letter
+// Given an array of words, group them into an object keyed by their first letter (case-insensitive).
+
+// Example:
+// Input: ["apple", "banana", "apricot", "cherry"]
+// Output:
+// {
+//   a: ["apple", "apricot"],
+//   b: ["banana"],
+//   c: ["cherry"]
+// }
+
+const prob12 = ['apple', 'banana', 'apricot', 'cherry'];
+
+function groupByFirstLetter(arr) {
+    return arr.reduce((acc, curr) => {
+        const firstLetter = curr[0].toLowerCase();
+        if (!acc[firstLetter]) {
+            acc[firstLetter] = [];
+        }
+        acc[firstLetter].push(curr);
+        return acc
+    }, {})
+}
+
+// console.log(groupByFirstLetter(prob12))
+
+
+// 🧩 Q13: Sum of Nested Numbers
+// Given an array that can contain numbers or arrays of numbers (nested to any depth), return the sum of all numbers.
+
+// Example:
+// Input: [1, [2, [3, 4]], 5]
+// Output: 15
+
+
+const prob13 = [1, [2, [3, 4]], 5];
+
+function sumOfNestedNumbers(arr) {
+    let flat = arr.flat(2);
+    return flat.reduce((acc, curr) => acc += curr);
+}
+
+// console.log(sumOfNestedNumbers(prob13))
+
+
+
+// 🧩 Q14: Top N Elements
+// Given an array of numbers and an integer n, return the n largest numbers in descending order.
+
+// Example:
+
+// Input: [4, 1, 7, 3, 9, 2], n = 3
+// Output: [9, 7, 4]
+
+const prob14 = [4, 1, 7, 3, 9, 2];
+
+function arrInDecresingOrder(arr, n) {
+    return arr.sort((a, b) => b - a).slice(0, n);
+}
+
+// console.log(arrInDecresingOrder(prob14, 3))
+
+
+// 🧩 Q15: Merge and Sort Arrays
+// Given an array of arrays, merge them into one sorted array without duplicates.
+
+// Example:
+
+// Input: [[3, 1], [4, 3, 2], [5]]
+// Output: [1, 2, 3, 4, 5]
+
+const prob15 = [[3, 1], [4, 3, 2], [5]];
+const probb = [1, 2, 2, 4, 2, 5, 3];
+// const filter = probb.filter((num,index)=>probb.indexOf(num) === index);
+// console.log(filter)
+function mergeAndSort(arr) {
+    const result = arr.flat(3)
+        .filter((num, index, flatarr) => flatarr.indexOf(num) === index)
+        .sort()
+    return result
+}
+
+// second arrroach would be recursive approach
+// console.log(mergeAndSort(prob15))
+
+
+
+// 🧩 Q16: Deep Flatten and Square
+// Given a deeply nested array of numbers, return a flat array where each number is squared.
+// Use HOFs only.
+
+// Example:
+
+// Input: [1, [2, [3, [4]]]]
+// Output: [1, 4, 9, 16]
+
+const prob16 = [1, [2, [3, [4]]]];
+function deepFlatenSquare(arr) {
+    const flat = arr.flat(Infinity)
+    const result = flat.map((num, index) => num * num);
+    return result
+}
+
+// console.log(deepFlatenSquare(prob16))
+
+
+
+// 🧩 Q17: Group by Age Range
+// Given an array of people objects, group them into ranges:
+
+// "young": age < 30
+// "adult": 30 ≤ age < 50
+// "senior": age ≥ 50
+
+// Example:
+// Input: [
+//   { name: "Alice", age: 25 },
+//   { name: "Bob", age: 35 },
+//   { name: "Eve", age: 55 }
+// ]
+// Output:
+// {
+//   young: [{ name: "Alice", age: 25 }],
+//   adult: [{ name: "Bob", age: 35 }],
+//   senior: [{ name: "Eve", age: 55 }]
+// }
+
+
+const prob17 = [
+    { name: "Alice", age: 25 },
+    { name: "Bob", age: 35 },
+    { name: "Eve", age: 55 }
+]
+
+
+function groupByAge(arr) {
+    let result = {};
+    for (let key in arr) {
+        const age = arr[key].age;
+        const value = arr[key];
+
+        if (age < 30) {
+            (result['young'] = [value]);
+        } else if (age >= 30 && age < 50) {
+            (result['adult'] = [value]);
+        } else {
+            (result['senior'] = [value]);
+        }
+    }
+    return result
+}
+
+// console.log(groupByAge(prob17))
+
+
+
+
+// 🧩 Q18: Word Frequency (Case-Insensitive, Punctuation Ignored)
+// Given a string, count how many times each word occurs (ignoring case and punctuation).
+
+// Example:
+
+// Input: "Hello, hello! How are you?"
+// Output: { hello: 2, how: 1, are: 1, you: 1 }
+
+const prob18 = 'Hello, hello! How are you';
+
+function wordFrequency(str) {
+    const words = str.replace(/[^\w\s]|_/g, '')
+    const arr = words.toLowerCase().split(' ')
+    return arr.reduce((acc, curr) => {
+        acc[curr] = (acc[curr] || 0) + 1
+        return acc;
+    }, {})
+
+}
+
+console.log(wordFrequency(prob18));
+
+
+
+// 🧩 Q19: Intersection of Arrays
+// Given two arrays, return a new array containing elements that appear in both arrays (unique values only).
+
+// Example:
+
+// Input: [1, 2, 3, 4], [3, 4, 4, 5]
+// Output: [3, 4]
+
+// const prob19
