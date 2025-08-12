@@ -619,7 +619,7 @@ function wordFrequency(str) {
 
 }
 
-console.log(wordFrequency(prob18));
+// console.log(wordFrequency(prob18));
 
 
 
@@ -631,4 +631,55 @@ console.log(wordFrequency(prob18));
 // Input: [1, 2, 3, 4], [3, 4, 4, 5]
 // Output: [3, 4]
 
-// const prob19
+const prob19a = [1, 2, 3, 4];
+const prob19b = [3, 4, 4, 5];
+
+function intersectionOfArr(arr1, arr2) {
+    const merged = [...arr1, ...arr2];
+    const commonElems = merged.filter((num, index) => merged.indexOf(num) !== index)
+    // console.log(commonElems)
+    return commonElems
+    // const common = arr1.filter((num,value)=>num == arr2)
+
+}
+
+// console.log(intersectionOfArr(prob19a, prob19b))
+
+
+
+
+
+// 🧩 Q20: Sort by Multiple Properties
+// Given an array of people objects, sort them by age ascending, and if the age is the same, sort by name alphabetically.
+
+// Example:
+
+// Input: [
+//   { name: "Bob", age: 25 },
+//   { name: "Alice", age: 25 },
+//   { name: "Charlie", age: 30 }
+// ]
+// Output:
+// [
+//   { name: "Alice", age: 25 },
+//   { name: "Bob", age: 25 },
+//   { name: "Charlie", age: 30 }
+// ]
+
+
+const prob20 = [
+    { name: "Bob", age: 25 },
+    { name: "Alice", age: 45 },
+    { name: "Charlie", age: 30 }
+]
+
+
+function sortMultipleProperty(arr) {
+    return arr.sort((a, b) => {
+        if (a.age !== b.age) {
+            return a.age - b.age
+        }
+    })
+}
+
+console.log(sortMultipleProperty(prob20))
