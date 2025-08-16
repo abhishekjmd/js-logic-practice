@@ -214,3 +214,126 @@ const count = new Counter();
 count.increment()
 count.increment()
 // console.log(count.getValue())
+
+
+
+
+
+
+// 🧩 Q6. Bank Account Constructor
+
+// Difficulty: Medium
+// Create a BankAccount constructor that initializes with ownerName and balance.
+
+// Add methods:
+// deposit(amount) → increases balance.
+// withdraw(amount) → decreases balance but should not allow negative balance.
+// getBalance() → returns current balance.
+
+// Example:
+// const acc = new BankAccount("Abhi", 1000);
+// acc.deposit(500);
+// acc.withdraw(300);
+// console.log(acc.getBalance()); // 1200
+// acc.withdraw(2000);        
+
+
+function BankAccount(ownerName, balance) {
+    this.ownerName = ownerName;
+    this.balance = balance;
+    this.deposit = function (amount) {
+        return this.balance += amount
+    }
+    this.withdraw = function (amount) {
+        return Math.max(this.balance -= amount, 0)
+    }
+    this.getBalance = function () {
+        return this.balance
+    }
+};
+
+const acc = new BankAccount('abhi', 1000);
+acc.deposit(500);
+acc.withdraw(300);
+console.log(acc.getBalance());
+acc.withdraw(2000)
+
+
+
+
+
+
+
+
+
+// 🧩 Q7. Shape Constructor with Inheritance
+
+// Difficulty: Medium
+// Create a Shape constructor with a property name.
+// Then create a Rectangle constructor that inherits from Shape and adds properties width and height.
+
+// Add methods:
+// area() → returns width * height.
+// perimeter() → returns 2 * (width + height).
+
+// Example:
+// const rect = new Rectangle("MyRect", 5, 10);
+// console.log(rect.name);        // "MyRect"
+// console.log(rect.area());      // 50
+// console.log(rect.perimeter()); // 30
+
+
+function Shape(name) {
+    this.name = name;
+
+}
+
+function Rectangle(name, width, height) {
+    Shape.call(this, name);
+    this.width = width;
+    this.height = height;
+};
+
+Rectangle.prototype.area = function () {
+    let area = this.width * this.height
+    return area
+};
+
+Rectangle.prototype.perimeter = function () {
+    return 2 * (this.height + this.width)
+}
+
+const rect = new Rectangle('myReact', 5, 20);
+console.log(rect.name);
+console.log(rect.area());
+console.log(rect.perimeter())
+
+
+
+
+
+// 🧩 Q8. Employee and Manager
+
+// Difficulty: Medium–Hard
+// Create an Employee constructor with properties: name, position, and salary.
+
+// Add a method getDetails() returning:
+// "Alice works as Developer earning 50000".
+// Then create a Manager constructor that extends Employee and adds a property team (array of employees).
+// Add a method getTeamSize() returning the number of employees in the team.
+
+// Example:
+// const emp1 = new Employee("Alice", "Developer", 50000);
+// console.log(emp1.getDetails()); // Alice works as Developer earning 50000
+
+// const m1 = new Manager("Bob", "Team Lead", 80000, [emp1]);
+// console.log(m1.getDetails());   // Bob works as Team Lead earning 80000
+// console.log(m1.getTeamSize());  // 1
+
+
+function Employee(name, position, salary) {
+    this.name = name;
+    this.position = position;
+    this.salary = salary
+
+}
