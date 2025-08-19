@@ -188,31 +188,35 @@
 //     - `reset()` → resets the counter back to the initial value and returns it.
 
 
-// class Counter {
-//     constructor(initialValue) {
-//         this.initialValue = initialValue
-//         this.count = initialValue
-//     }
-//     // resetValue = this.initialValue
-//     increment() {
-//         this.count++
-//         return this.count;
-//     }
-//     decrement() {
-//         this.count--;
-//         return this.count;
-//     }
-//     reset() {
-//         this.count = this.initialValue;
-//         return this.count
-//     }
-// }
+class Counter {
+    constructor(initialvalue) {
+        this.initialvalue = initialvalue;
+        this.count = initialvalue
+    }
 
-// const counter = new Counter(5);
-// console.log( counter.increment()); // 6
-// console.log(counter.increment()); // 7
-// console.log(counter.reset());     // 5
-// console.log(counter.decrement()) // 4
+    increment() {
+        return ++this.count
+    }
+
+    decrement() {
+        return --this.count;
+    }
+    reset() {
+        this.count = this.initialvalue;
+        return this.count
+    }
+};
+
+const counter = new Counter(5);
+// console.log(counter.increment());
+// console.log(counter.increment());
+// console.log(counter.reset());
+// console.log(counter.decrement());
+
+
+
+
+
 
 
 // 🔹 Problem 2:  Classes & Method Binding
@@ -229,44 +233,48 @@
 // getResult() → returns the current result.
 // All methods except getResult should return this to allow chaining
 
-// class Calculator {
-//     constructor() {
-//         this.result = 0;
-//     }
-//     add(number) {
-//         this.result += number;
-//         return this;
-//     }
-//     subtract(number) {
-//         this.result -= number
-//         return this;
-//     }
 
-//     multiply(number) {
-//         this.result *= number
-//         return this;
-//     }
+class Calculator {
+    constructor() {
+        this.result = 0;
+    }
+    add(number) {
+        this.result += number;
+        return this;
+    };
+    subtract(number) {
+        this.result -= number;
+        return this
+    }
+    multiply(number) {
+        this.result *= number;
+        return this
+    }
+    divide(number) {
+        if (number === 0) {
+            console.log('cannot divide by zero')
+        } else {
+            this.result /= number
+            return this;
+        }
+    }
+    clear() {
+        this.result = 0;
+        return this
+    }
+    getValue() {
+        return this.result
+    }
 
-//     divide(number) {
-//         this.result /= number;
-//         return this
-//     }
+}
 
-//     getResult() {
-//         return this.result;
-//     }
-// }
+const calc = new Calculator();
+
+// console.log(calc.add(5).subtract(2).multiply(10).divide(3).clear().getValue())
 
 
-// const calc = new Calculator();
-// const result = calc
-//     .add(10)
-//     .subtract(2)
-//     .multiply(3)
-//     .divide(2)
-//     .getResult()
 
-// console.log(result); 
+
 
 
 // 🔹 Problem 3: Object-Oriented Programming (OOP), Class, Encapsulation,
@@ -289,41 +297,56 @@
 // Returns an object with accountNumber, accountHolderName, and balance.
 
 
-// class BankAccount {
-//     constructor(accountNumber, accountHolder, balance) {
-//         this.accountNumber = accountNumber;
-//         this.accountHolder = accountHolder;
-//         this.balance = balance
-//     }
-//     deposit(amount) {
-//         this.balance += amount;
-//     }
-//     withdraw(amount) {
-//         this.balance -= amount;
-//     }
-//     checkBalance() {
-//         return this.balance
-//     }
-//     getDetails() {
-//         return {
-//             accountNumber: this.accountNumber,
-//             accountHolder: this.accountHolder,
-//             balance: this.balance
-//         }
-//     }
 
-// }
+class Bank {
+    constructor(accountNumber, accountHolderName, balance) {
+        this.accountNumber = accountNumber;
+        this.accountHolderName = accountHolderName;
+        this.balance = balance
+    }
+    deposit(number) {
+        if (number <= 0) {
+            throw new Error('pls enter valid amount')
+        } else {
+            this.balance += number;
+        }
+    }
+    withdraw(number) {
+        if (number <= 0) {
+            throw new Error('pls enter valid amount')
+        } else {
+            this.balance -= number;
+
+        }
+    }
+
+    checkBalance() {
+        return this.balance;
+    }
+
+    getDetails() {
+        return {
+            accountNumber: this.accountNumber,
+            accountHolderName: this.accountHolderName,
+            balance: this.balance
+        }
+    }
+}
 
 
-// const account = new BankAccount("123456", "Abhishek", 1000);
-// account.deposit(500);      // balance = 1500
-// account.withdraw(200);     // balance = 1300
-// console.log(account.checkBalance());  // 1300
-// console.log(account.getDetails());
+const bank = new Bank('1234567890', 'abhishek', 2000);
+bank.deposit(8000);
+bank.withdraw(1000);
+// console.log(bank.checkBalance());
+// console.log(bank.getDetails())
 
 
 
 
+
+
+
+// 🔹 Problem 4:  Implement a Bank Account System (Class-Based) diff question
 // refine of above question
 // A constructor taking (accountNumber, holderName, balance)
 // Methods:
@@ -333,50 +356,51 @@
 // A static method: getTotalAccounts() → returns how many objects have been created.
 
 // 🧠 Constraints:
-
 // withdraw should not allow overdrawing.
-
 // Total accounts should be tracked using a static variable.
 
 // ⬇️ Implement the class — don't log or run, just define.
 // refined version of above question
 // with tweaks like totalAccounts and also the 
 
-// class BankAccount {
-//     static totalAccounts =0;
-//     constructor(accountNumber, accountHolder, balance) {
-//         this.accountNumber = accountNumber;
-//         this.accountHolder = accountHolder;
-//         this.balance = balance;
-//         BankAccount.totalAccounts++ 
-//     }
 
-//     deposit(amount) {
-//         this.balance += amount
-//     }
-//     withdraw(amount) {
-//         if (amount <= 0) {
-//             throw new Error('withdraw amount shall be greater then 0')
-//         }
-//         if (amount > this.balance) {
-//             throw new Error('withdraw amount shall be less then current balance')
-//         }
-//         this.balance -= amount;
-//     }
 
-//     checkbalance() {
-//         return this.balance;
-//     }
+class BankAccountSystem {
+    static totalAccounts = 0;
+    constructor(accountNumber, holderName, balance) {
+        this.accountNumber = accountNumber,
+            this.holderName = holderName,
+            this.balance = balance,
+            BankAccountSystem.totalAccounts++
+    }
+    deposit(amount) {
+        this.balance += amount
+    }
+    withdraw(amount) {
+        if (amount > this.balance) {
+            throw new Error('insufficient balance')
+        } else {
+            this.balance -= amount
+        }
+    }
+    checkBalance() {
+        return this.balance
+    }
+    getTotalAccounts() {
+        return BankAccountSystem.totalAccounts
+    }
+}
 
-//     static getTotalAccount() {
-//         return BankAccount.totalAccounts
-//     }
-// }
 
-// const a1 = new BankAccount("123", "Abhi", 1000);
-// const a2 = new BankAccount("456", "Ravi", 2000);
+const bankSystem1 = new BankAccountSystem(1234567890, 'himanshu', 5000);
+const bankSystem2 = new BankAccountSystem(12345, 'harsh', 15000);
+bankSystem1.deposit(15000);
+bankSystem1.withdraw(3000);
+// console.log(bankSystem1.checkBalance());;
+// console.log(bankSystem1.getTotalAccounts())
 
-// console.log(BankAccount.getTotalAccount());
+
+
 
 
 
@@ -415,75 +439,71 @@
 // const admin = new Admin("SuperAdmin", "admin@email.com");
 
 // console.log(user1.login());
-// // "User Abhi has logged in"
+// "User Abhi has logged in"
 
 // console.log(User.userList.length);
-// // 3
+// 3
 
 // admin.deleteUser(user2);
-
 // console.log(User.userList.length);
 
-{/*
+
+
+
 class User {
-    static listUsers = [];
+    static userList = []
     constructor(username, email) {
-        this.username = username;
-        this.email = email;
-        User.listUsers.push(this);
+        this.username = username,
+            this.email = email,
+            User.userList.push({ username: this.username, email: this.email })
     }
     login() {
-        return `User ${this.username} has logged in`
-    }
-
-    static userList() {
-        return User.listUsers
+        return `use ${this.username} has logged in`
     }
 }
 
-class Admin extends User {
+class admin extends User {
     constructor(username, email) {
-        super(username, email);
+        super(username, email)
         this.role = 'admin'
+
     }
     deleteUser(user) {
-        User.listUsers = User.listUsers.filter(u => u.username !== user.username)
+        User.userList = User.userList.filter((value) => user.username !== value.username)
+
     }
 }
 
 
 const user1 = new User('abhi', 'abhi@gmail.com');
-const user2 = new User('himanshu', 'himanshu@gmail.com');
-const admin = new Admin('superAdmin', 'admin@gmail.com');
-console.log(user1.login());
-console.log(user2.login());
-console.log(User.userList().length);
-admin.deleteUser(user2)
-console.log(User.userList().length);
-*/}
+const user2 = new User('himansh', 'himanshu@gmail.com');
+const adminOne = new admin('superAmin', 'admin@gmail.com');
+// adminOne.deleteUser(user1)
+// console.log(User.userList.length)
+
+
+
+
+
+
+
 
 
 {/*
-       
+   🔹 Problem 6:  Implement a Library System
    Create a Book class and a Library class. The system should support:
 
  ✅ Requirements:
  Book class:
  Has properties: title, author, and isAvailable (default true).
-
  Method: borrow() — marks the book as not available.
-
  Method: returnBook() — marks the book as available.
 
  Library class:
  Has a list of books (this.books).
-
  Method: addBook(book) — adds a book to the library.
-
  Method: borrowBook(title) — if available, borrows the book and returns it; else returns "Not Available".
-
  Method: returnBook(title) — returns the book back to the library.
-
  Method: listAvailableBooks() — returns a list of titles that are available.
 
 💡 Example:
@@ -502,60 +522,231 @@ console.log(User.userList().length);
 
     */}
 
+
+
 class Book {
-    constructor(title, author) {
-        this.title = title;
-        this.author = author;
-        this.available = true;
+    constructor(title, author, isAvailable = true) {
+        this.title = title,
+            this.author = author,
+            this.isAvailable = isAvailable
     }
 
     borrow() {
-        return this.available = false;
+        this.isAvailable = false
     }
-
     returnBook() {
-        return this.available = true;
+        this.isAvailable = true
     }
 }
 
-class Library extends Book {
-    static libraryList = []
+
+class Library {
+    constructor() {
+        this.books = []
+    }
+
+    addBook(book) {
+        const exist = this.books.some(value => value.title === book.title);
+        if (!exist) {
+            this.books.push(book)
+        } else {
+            console.log(`book with title ${this.title} already exists in the library`)
+        }
+    }
+    borrowBook(book) {
+        const exist = this.books.some(value => value.title === book.title);
+        if (exist) {
+            this.books = this.books.filter(value => value.title !== book.title)
+
+            book.borrow()
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+// Q7. Implement a Rectangle Class
+
+// Create a Rectangle class with:
+// Constructor taking width and height
+// Method getArea() that returns the area of the rectangle
+// Method getPerimeter() that returns the perimeter
+
+// Example:
+// const rect = new Rectangle(5, 10);
+// rect.getArea();      // 50
+// rect.getPerimeter(); // 30
+
+
+
+class Rectangle {
+    constructor(height, width) {
+        this.height = height;
+        this.width = width
+    }
+    getArea() {
+        return this.height * this.width
+    }
+    getPerimeter() {
+        return 2 * (this.height + this.width)
+    }
+}
+
+const rect = new Rectangle(5, 10);
+// console.log(rect.getArea());
+// console.log(rect.getPerimeter());
+
+
+
+
+// Q8. Student Grade System
+
+// Create a Student class with:
+// Constructor taking name and marks (array of numbers)
+// Method getAverage() returning the average of marks
+// Method getGrade() returning "A" if avg ≥ 90, "B" if avg ≥ 75, "C" if avg ≥ 50, otherwise "F"
+
+// Example:
+// const student = new Student("Alice", [80, 90, 100]);
+// student.getAverage(); // 90
+// student.getGrade();   // "A"
+
+
+class Student {
+    static average;
+    constructor(name, marks = []) {
+        this.name = name;
+        this.marks = marks
+    }
+    getAverage() {
+        Student.average = this.marks.reduce((acc, curr) => acc + curr, 0) / this.marks.length;
+        return Student.average;
+    }
+    getGrade() {
+        if (Student.average >= 90) {
+            return 'A'
+        } else if (Student.average >= 75) {
+            return 'B'
+        } else if (Student.average >= 50) {
+            return 'C'
+        } else {
+            return 'F'
+        }
+    }
+}
+
+const student = new Student('Alice', [80, 90, 100]);
+// console.log(student.getAverage());
+// console.log(student.getGrade())
+
+
+
+
+
+// Q9. Inheritance: Vehicle → Car
+
+// Create a Vehicle class with:
+// Property brand
+// Method start() that logs "brand started"
+// Extend it into a Car class with:
+// Additional property model
+// Method drive() that logs "brand model is driving"
+
+// Example:
+// const car = new Car("Toyota", "Camry");
+// car.start(); // "Toyota started"
+// car.drive(); // "Toyota Camry is driving"
+
+
+class Vehicle {
+    constructor(brand) {
+        this.brand = brand
+    }
+    start() {
+        return `${this.brand} started`
+    }
+}
+
+
+class Car extends Vehicle {
+    constructor(brand, model) {
+        super(brand)
+        this.model = model
+
+    }
+    drive() {
+        return `${this.brand} ${this.model} is driving`
+    }
+}
+
+const car = new Car('Toyota', 'Camry');
+// console.log(car.start());
+// console.log(car.drive())
+
+
+
+
+
+// Q5. Library System
+
+// Create two classes:
+// Book → properties: title, author
+// Library → has a list of books with methods:
+// addBook(book) → add a book
+// removeBook(title) → remove by title
+// listBooks() → return array of titles
+
+// Example:
+// const lib = new Library();
+// lib.addBook(new Book("JS Guide", "Kyle Simpson"));
+// lib.addBook(new Book("Eloquent JS", "Marijn Haverbeke"));
+// lib.listBooks(); // ["JS Guide", "Eloquent JS"]
+// lib.removeBook("JS Guide");
+// lib.listBooks(); // ["Eloquent JS"]
+
+
+
+class BookAnother {
     constructor(title, author) {
-        super(title, author);
-        this.borrow = title;
+        this.title = title,
+            this.author = author
+    }
+}
+
+class LibraryAnother {
+    constructor() {
+        this.booklists = [];
     }
     addBook(book) {
-        const found = Library.libraryList.find(u => u.title === book.title)
-        if (!found) {
-            Library.libraryList.push(book)
+        const exist = this.booklists.some(value => value.title === book.title);
+        if (!exist) {
+            this.booklists.push(book);
+        } else {
+            return `the book with title ${book.title} already exists`
         }
     }
-
-    borrowBook(title) {
-        const book = Library.libraryList.find(u => u.title === title);
-        if (book && book.available) {
-            book.available = false
-        }
-        return null
-    }
-
-    returnBook(title){
+    removeBook(book) {
+        this.booklists = this.booklists.filter(b => b.title !== book);
 
     }
-
-    // logBook() {
-    //     return Library.libraryList
-    // }
-    // borrowBook(title) {
-
-    // }
-
+    listBooks() {
+        return this.booklists
+    }
 }
-const b1 = new Book("The Alchemist", "Paulo Coelho");
-const b2 = new Book("1984", "George Orwell");
 
-const library = new Library();
-library.addBook(b1)
-library.addBook(b2)
-console.log(library.borrowBook(b1));
-// console.log(library.logBook());
+
+const lib = new LibraryAnother();
+lib.addBook(new BookAnother("JS Guide", "Kyle Simpson"));
+lib.addBook(new BookAnother("Eloquent JS", "Marijn Haverbeke"));
+lib.addBook(new BookAnother("Eloquent JS", "Marijn Haverbeke"));
+console.log(lib.listBooks()); // ["JS Guide", "Eloquent JS"]
+console.log(lib.removeBook("JS Guide"));
+console.log(lib.listBooks()); // ["Eloquent JS"]
