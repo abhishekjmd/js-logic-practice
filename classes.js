@@ -557,5 +557,5 @@ const b2 = new Book("1984", "George Orwell");
 const library = new Library();
 library.addBook(b1)
 library.addBook(b2)
-console.log(library.borrowBook(b1));
+// console.log(library.borrowBook(b1));
 // console.log(library.logBook());

@@ -151,4 +151,4 @@ function findPairs(arr, target) {
     return result;
 }
 
-console.log(findPairs([1, 2, 3, 4, 5], 5))
+// console.log(findPairs([1, 2, 3, 4, 5], 5))
