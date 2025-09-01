@@ -267,4 +267,4 @@ function mostFrequentChar(str) {
   return frequentChar
 }
 
-console.log(mostFrequentChar('paytm'))
+// console.log(mostFrequentChar('paytm'))
