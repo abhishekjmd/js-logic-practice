@@ -68,3 +68,19 @@
 // console.log(t.name); // ?
 
 
+// leetcode style problems
+// Q1. Create a Person Constructor
+
+// Difficulty: Easy
+
+// Write a constructor function Person that takes name and age as parameters and assigns them to the object.
+
+// Example:
+
+// const p1 = new Person("Abhi", 25);
+// console.log(p1.name); // "Abhi"
+// console.log(p1.age);  // 25
+
+function Person = {
+    
+}
